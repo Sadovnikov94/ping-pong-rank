@@ -6,7 +6,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import client.pingpong.isadovnikov.ping_pong_client.databinding.FragmentSetupGameBinding
+import androidx.navigation.findNavController
+import client.pingpong.isadovnikov.ping_pong_client.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
 
@@ -14,9 +15,20 @@ class GameFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentSetupGameBinding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_setup_game, container, false
+        val binding: FragmentGameBinding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_game, container, false
         )
+        binding.invalidateAll()
+
+
+        binding.playerOneAvatar.setOnClickListener { it: View ->
+            it.findNavController().navigate(R.id.action_gameFragment_to_titleFragment)
+        }
+
+        binding.playerTwoAvatar.setOnClickListener { it: View ->
+            it.findNavController().navigate(R.id.action_gameFragment_to_titleFragment)
+        }
+
 
         return binding.root
     }

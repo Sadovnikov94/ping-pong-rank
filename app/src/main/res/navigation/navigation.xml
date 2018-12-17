@@ -8,15 +8,17 @@
               android:label="fragment_title" tools:layout="@layout/fragment_title">
         <action
             android:id="@+id/action_titleFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameConfigurationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/gameFragment"
-        android:name="client.pingpong.isadovnikov.ping_pong_client.TitleFragment"
+        android:id="@+id/gameConfigurationFragment"
+        android:name="client.pingpong.isadovnikov.ping_pong_client.GameConfigurationFragment"
         android:label="fragment_setup_game"
-        tools:layout="@layout/fragment_setup_game" >
-        <action
-            android:id="@+id/action_gameFragment_to_titleFragment"
-            app:destination="@id/titleFragment" />
+        tools:layout="@layout/fragment_game_configuration" >
+        <action android:id="@+id/action_gameConfigurationFragment_to_gameFragment" app:destination="@id/gameFragment"/>
+    </fragment>
+    <fragment android:id="@+id/gameFragment" android:name="client.pingpong.isadovnikov.ping_pong_client.GameFragment"
+              android:label="fragment_game" tools:layout="@layout/fragment_game">
+        <action android:id="@+id/action_gameFragment_to_titleFragment" app:destination="@id/titleFragment"/>
     </fragment>
 </navigation>

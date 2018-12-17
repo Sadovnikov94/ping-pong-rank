@@ -12,11 +12,6 @@ import client.pingpong.isadovnikov.ping_pong_client.databinding.FragmentTitleBin
 
 class TitleFragment : Fragment() {
 
-
-    private val stupPlayers = listOf(
-            "Ihar", "Osama", "Ruben", "Christian"
-    )
-
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?

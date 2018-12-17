@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="client.pingpong.isadovnikov.ping_pong_client.GameFragment">
+    tools:context="client.pingpong.isadovnikov.ping_pong_client.GameConfigurationFragment">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/titleConstraint"
@@ -29,12 +29,15 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:contentDescription="@string/playerOneImageContentDescription"
+            android:minWidth="100dp"
+            android:minHeight="100dp"
+            android:src="@drawable/ic_icons8_user_male"
             app:layout_constraintEnd_toStartOf="@+id/playerTwoAvatar"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            tools:src="@tools:sample/avatars[1]" />
+            tools:src="@drawable/ic_icons8_user_male" />
 
         <ImageView
             android:id="@+id/playerTwoAvatar"
@@ -43,11 +46,13 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:contentDescription="@string/playerTwoImageConternDescription"
+            android:minWidth="100dp"
+            android:minHeight="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/playerOneAvatar"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            tools:src="@tools:sample/avatars[3]" />
+            tools:src="@drawable/ic_icons8_user_male" />
 
 
         <Button
