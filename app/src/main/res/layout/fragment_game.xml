@@ -10,46 +10,74 @@
         android:layout_height="match_parent">
 
         <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/gameTitle"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/gameTitle"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-                android:id="@+id/playerOneAvatar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:contentDescription="@string/playerOneImageContentDescription"
-                app:layout_constraintEnd_toStartOf="@+id/playerTwoAvatar"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                tools:src="@tools:sample/avatars[1]" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+            android:id="@+id/playerOneAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/playerOneImageContentDescription"
+            android:minWidth="100dp"
+            android:minHeight="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/playerTwoAvatar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:srcCompat="@drawable/ic_icons8_user_male"
+            tools:src="@drawable/ic_icons8_user_male" />
 
         <ImageView
-                android:id="@+id/playerTwoAvatar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:contentDescription="@string/playerTwoImageConternDescription"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/playerOneAvatar"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                tools:src="@tools:sample/avatars[3]" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+            android:id="@+id/playerTwoAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/playerTwoImageConternDescription"
+            android:minWidth="100dp"
+            android:minHeight="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/playerOneAvatar"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:srcCompat="@drawable/ic_icons8_user_male"
+            tools:src="@drawable/ic_icons8_user_male" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/playerOneAvatar"
+            app:layout_constraintEnd_toEndOf="@+id/playerOneAvatar"
+            app:layout_constraintStart_toStartOf="@+id/playerOneAvatar" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/playerTwoAvatar"
+            app:layout_constraintEnd_toEndOf="@+id/playerTwoAvatar"
+            app:layout_constraintStart_toStartOf="@+id/playerTwoAvatar" />
 
 
     </android.support.constraint.ConstraintLayout>
