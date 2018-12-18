@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-        tools:context="client.pingpong.isadovnikov.ping_pong_client.TitleFragment">
+    tools:context="client.pingpong.isadovnikov.ping_pong_client.TitleFragment">
 
     <android.support.constraint.ConstraintLayout
-            android:id="@+id/titleConstraint"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:id="@+id/titleConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <Button
@@ -24,10 +24,12 @@
 
         <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="439dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/startButton">
@@ -36,8 +38,7 @@
                 android:id="@+id/playersRank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-            </LinearLayout>
+                android:orientation="vertical"/>
         </ScrollView>
     </android.support.constraint.ConstraintLayout>
 </layout>

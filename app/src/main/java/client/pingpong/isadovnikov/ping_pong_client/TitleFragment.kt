@@ -3,9 +3,11 @@ package client.pingpong.isadovnikov.ping_pong_client
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.navigation.findNavController
 import client.pingpong.isadovnikov.ping_pong_client.databinding.FragmentTitleBinding
@@ -47,10 +49,23 @@ class TitleFragment : Fragment() {
             Response.Listener<String> { response ->
                 val responseObject = gson.fromJson(response, UsersResponse::class.java)
                 for (user in responseObject.users) {
-                    val textView = TextView(parentView.context)
-                    textView.text = user.username
 
-                    parentView.addView(textView)
+                    val userLine = LinearLayout(parentView.context)
+                    userLine.orientation = LinearLayout.HORIZONTAL
+
+                    val ratingView = TextView(parentView.context)
+                    ratingView.text = user.rating
+                    ratingView.textSize = 30F
+                    ratingView.gravity = Gravity.START
+                    userLine.addView(ratingView)
+
+                    val usernameView = TextView(parentView.context)
+                    usernameView.text = user.username
+                    usernameView.textSize = 30F
+                    usernameView.gravity = Gravity.END
+                    userLine.addView(usernameView)
+
+                    parentView.addView(userLine)
                 }
 
             },
@@ -70,5 +85,6 @@ data class UsersResponse(
 )
 
 data class User(
-    val username: String
+    val username: String,
+    val rating: String
 )
