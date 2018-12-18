@@ -23,8 +23,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-
-
-val stupPlayers = listOf(
-    "Ihar", "Osama", "Ruben", "Christian"
-)

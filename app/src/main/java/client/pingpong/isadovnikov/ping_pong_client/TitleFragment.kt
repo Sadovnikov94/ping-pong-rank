@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TableLayout
+import android.widget.TableRow
 import android.widget.TextView
 import androidx.navigation.findNavController
 import client.pingpong.isadovnikov.ping_pong_client.databinding.FragmentTitleBinding
@@ -38,53 +40,7 @@ class TitleFragment : Fragment() {
             it.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)
         }
 
-        this.buildRankList(binding.playersRank)
-
         return binding.root
     }
 
-    private fun buildRankList(parentView: ViewGroup) {
-        val request = StringRequest(
-            "$HOST/pingpong/users",
-            Response.Listener<String> { response ->
-                val responseObject = gson.fromJson(response, UsersResponse::class.java)
-                for (user in responseObject.users) {
-
-                    val userLine = LinearLayout(parentView.context)
-                    userLine.orientation = LinearLayout.HORIZONTAL
-
-                    val ratingView = TextView(parentView.context)
-                    ratingView.text = user.rating
-                    ratingView.textSize = 30F
-                    ratingView.gravity = Gravity.START
-                    userLine.addView(ratingView)
-
-                    val usernameView = TextView(parentView.context)
-                    usernameView.text = user.username
-                    usernameView.textSize = 30F
-                    usernameView.gravity = Gravity.END
-                    userLine.addView(usernameView)
-
-                    parentView.addView(userLine)
-                }
-
-            },
-            Response.ErrorListener { it ->
-                val textView = TextView(this.context)
-                textView.text = "That didn't work! $it"
-                parentView.addView(textView)
-            }
-        )
-
-        queue.add(request);
-    }
 }
-
-data class UsersResponse(
-    val users: List<User>
-)
-
-data class User(
-    val username: String,
-    val rating: String
-)
