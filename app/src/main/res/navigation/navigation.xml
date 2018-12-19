@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation"
-            app:startDestination="@id/titleFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/titleFragment">
 
-    <fragment android:id="@+id/titleFragment" android:name="client.pingpong.isadovnikov.ping_pong_client.TitleFragment"
-              android:label="fragment_title" tools:layout="@layout/fragment_title">
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="client.pingpong.isadovnikov.ping_pong_client.TitleFragment"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_title">
         <action
             android:id="@+id/action_titleFragment_to_gameFragment"
             app:destination="@id/gameConfigurationFragment" />
@@ -14,11 +18,30 @@
         android:id="@+id/gameConfigurationFragment"
         android:name="client.pingpong.isadovnikov.ping_pong_client.GameConfigurationFragment"
         android:label="fragment_setup_game"
-        tools:layout="@layout/fragment_game_configuration" >
-        <action android:id="@+id/action_gameConfigurationFragment_to_gameFragment" app:destination="@id/gameFragment"/>
+        tools:layout="@layout/fragment_game_configuration">
+        <action
+            android:id="@+id/action_gameConfigurationFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_gameConfigurationFragment_to_userSearchFragment"
+            app:destination="@id/userSearchFragment" />
     </fragment>
-    <fragment android:id="@+id/gameFragment" android:name="client.pingpong.isadovnikov.ping_pong_client.GameFragment"
-              android:label="fragment_game" tools:layout="@layout/fragment_game">
-        <action android:id="@+id/action_gameFragment_to_titleFragment" app:destination="@id/titleFragment"/>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="client.pingpong.isadovnikov.ping_pong_client.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userSearchFragment"
+        android:name="client.pingpong.isadovnikov.ping_pong_client.UserSearchFragment"
+        android:label="fragment_search_user"
+        tools:layout="@layout/fragment_search_user">
+        <action
+            android:id="@+id/action_userSearchFragment_to_gameConfigurationFragment"
+            app:destination="@id/gameConfigurationFragment" />
     </fragment>
 </navigation>

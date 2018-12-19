@@ -5,7 +5,7 @@
     tools:context="client.pingpong.isadovnikov.ping_pong_client.GameFragment">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/titleConstraint"
+        android:id="@+id/gameFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

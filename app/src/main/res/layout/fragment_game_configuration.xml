@@ -5,7 +5,7 @@
     tools:context="client.pingpong.isadovnikov.ping_pong_client.GameConfigurationFragment">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/titleConstraint"
+        android:id="@+id/gameConfigurationFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -26,17 +26,16 @@
             android:id="@+id/playerOneAvatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:contentDescription="@string/playerOneImageContentDescription"
             android:minWidth="100dp"
             android:minHeight="100dp"
             android:src="@drawable/ic_icons8_user_male"
-            app:layout_constraintEnd_toStartOf="@+id/playerTwoAvatar"
+            app:layout_constraintEnd_toEndOf="@+id/playerOneName"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintStart_toStartOf="@+id/playerOneName"
+            app:layout_constraintTop_toBottomOf="@+id/playerOneName"
             app:srcCompat="@drawable/ic_icons8_user_male"
             tools:src="@drawable/ic_icons8_user_male" />
 
@@ -44,15 +43,13 @@
             android:id="@+id/playerTwoAvatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginTop="32dp"
             android:contentDescription="@string/playerTwoImageConternDescription"
             android:minWidth="100dp"
             android:minHeight="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerOneAvatar"
-            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintEnd_toEndOf="@+id/playerTwoName"
+            app:layout_constraintStart_toStartOf="@+id/playerTwoName"
+            app:layout_constraintTop_toBottomOf="@+id/playerTwoName"
             app:srcCompat="@drawable/ic_icons8_user_male"
             tools:src="@drawable/ic_icons8_user_male" />
 
@@ -68,5 +65,25 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/playerOneName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/playerTwoName"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/playerTwoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/playerOneName"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
     </android.support.constraint.ConstraintLayout>
 </layout>

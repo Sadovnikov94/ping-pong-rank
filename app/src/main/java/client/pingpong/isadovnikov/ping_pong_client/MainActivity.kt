@@ -2,6 +2,7 @@ package client.pingpong.isadovnikov.ping_pong_client
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -23,3 +24,18 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+var playerOne: User? = null
+var playerTwo: User? = null
+
+
+
+data class UsersResponse(
+        val users: List<User>
+)
+
+data class User(
+        val username: String,
+        val rating: String
+)
+
