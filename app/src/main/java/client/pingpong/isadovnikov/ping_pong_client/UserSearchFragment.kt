@@ -24,6 +24,7 @@ class UserSearchFragment : Fragment() {
     private lateinit var queue: RequestQueue
     private lateinit var gson: Gson
     private var bundle: Bundle? = null
+    private var sortedByRating: Boolean = false
 
 
     override fun onCreateView(
@@ -35,7 +36,11 @@ class UserSearchFragment : Fragment() {
         )
         binding.invalidateAll()
 
+
         bundle = this.arguments
+
+        sortedByRating = bundle == null
+
         gson = Gson()
         queue = Volley.newRequestQueue(this.context)
         host = getString(R.string.host)
@@ -51,7 +56,13 @@ class UserSearchFragment : Fragment() {
             "$host/pingpong/users",
             Response.Listener<String> { response ->
                 val responseObject = gson.fromJson(response, UsersResponse::class.java)
-                for (user in responseObject.users) {
+                val users = if( sortedByRating) {
+                    responseObject.users.sortedByDescending { it.rating }
+                } else {
+                    responseObject.users
+                }
+
+                for (user in users) {
 
                     val userLine = TableRow(parentView.context)
 
