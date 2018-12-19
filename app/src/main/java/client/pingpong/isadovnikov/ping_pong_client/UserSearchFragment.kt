@@ -20,6 +20,7 @@ import com.google.gson.Gson
 class UserSearchFragment : Fragment() {
 
     private lateinit var host: String
+
     private lateinit var queue: RequestQueue
     private lateinit var gson: Gson
     private var bundle: Bundle? = null
