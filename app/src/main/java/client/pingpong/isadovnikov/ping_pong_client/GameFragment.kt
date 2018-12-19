@@ -20,6 +20,8 @@ class GameFragment : Fragment() {
         )
         binding.invalidateAll()
 
+        binding.playerOneUsername.text = playerOne?.username
+        binding.playerTwoUsername.text = playerTwo?.username
 
         binding.playerOneAvatar.setOnClickListener { it: View ->
             it.findNavController().navigate(R.id.action_gameFragment_to_titleFragment)

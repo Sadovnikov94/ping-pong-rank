@@ -60,21 +60,19 @@
             tools:src="@drawable/ic_icons8_user_male" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/playerOneUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/playerOneAvatar"
             app:layout_constraintEnd_toEndOf="@+id/playerOneAvatar"
             app:layout_constraintStart_toStartOf="@+id/playerOneAvatar" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/playerTwoUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/playerTwoAvatar"
             app:layout_constraintEnd_toEndOf="@+id/playerTwoAvatar"
             app:layout_constraintStart_toStartOf="@+id/playerTwoAvatar" />
