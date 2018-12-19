@@ -1,5 +1,5 @@
 <resources>
-    <string name="host">http://10.20.152.22:8080</string>
+    <string name="host">http://10.20.152.102:8080</string>
     <string name="app_name">ping-pong-client</string>
     <string name="game_start_button">Start Game</string>
     <string name="game_configuration_title">Select Players</string>

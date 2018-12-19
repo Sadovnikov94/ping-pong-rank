@@ -3,6 +3,8 @@ package client.pingpong.isadovnikov.ping_pong_client
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +27,7 @@ class UserSearchFragment : Fragment() {
     private lateinit var gson: Gson
     private var bundle: Bundle? = null
     private var sortedByRating: Boolean = false
+    private var dataList: List<User> = listOf()
 
 
     override fun onCreateView(
@@ -47,35 +50,57 @@ class UserSearchFragment : Fragment() {
 
         this.buildRankList(binding.playersRank)
 
+        binding.searchUser.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                binding.playersRank.removeAllViews()
+                fillList(binding.playersRank, s.toString())
+            }
+        })
+
         return binding.root
     }
 
     private fun buildRankList(parentView: ViewGroup) {
-        var number = 1
         val request = StringRequest(
-            "$host/pingpong/users",
-            Response.Listener<String> { response ->
-                val responseObject = gson.fromJson(response, UsersResponse::class.java)
-                val users = if( sortedByRating) {
-                    responseObject.users.sortedByDescending { it.rating }
-                } else {
-                    responseObject.users
-                }
+                "$host/pingpong/users",
+                Response.Listener<String> { response ->
+                    val responseObject = gson.fromJson(response, UsersResponse::class.java)
+                    this.dataList = if (sortedByRating) {
+                        responseObject.users.sortedByDescending { it.rating.toDouble() }
+                    } else {
+                        responseObject.users
+                    }
 
-                for (user in users) {
+                    fillList(parentView, ".")
+
+                },
+                Response.ErrorListener { it ->
+                    val textView = TextView(parentView.context)
+                    textView.text = "That didn't work! $it"
+                    parentView.addView(textView)
+                }
+        )
+
+        queue.add(request);
+    }
+
+    private fun fillList(parentView: ViewGroup, search: String) {
+
+        this.dataList.filter { it.username.contains(search) }
+                .forEach { user ->
 
                     val userLine = TableRow(parentView.context)
 
-                    val positionView = TextView(parentView.context)
-                    positionView.text = number.toString()
-                    positionView.textSize = 30F
-                    positionView.gravity = Gravity.START
-                    userLine.addView(positionView)
-
                     val ratingView = TextView(parentView.context)
-                    ratingView.text = user.rating
+                    ratingView.setPadding(0, 0, 32, 0)
+                    ratingView.text = String.format("%.2f",user.rating.toDouble())
                     ratingView.textSize = 30F
-                    ratingView.gravity = Gravity.START
                     userLine.addView(ratingView)
 
                     val usernameView = TextView(parentView.context)
@@ -84,11 +109,11 @@ class UserSearchFragment : Fragment() {
                     usernameView.gravity = Gravity.END
                     userLine.addView(usernameView)
 
-                    userLine.setOnClickListener {listener ->
+                    userLine.setOnClickListener { listener ->
                         bundle?.also {
                             val id = it.getInt(CLICK_OBJECT)
 
-                            when(id) {
+                            when (id) {
                                 R.id.playerOneAvatar -> playerOne = user
                                 R.id.playerTwoAvatar -> playerTwo = user
                             }
@@ -100,18 +125,9 @@ class UserSearchFragment : Fragment() {
                         }
                     }
 
+                    userLine.setBackgroundResource(R.drawable.row_border)
+
                     parentView.addView(userLine)
-                    number++;
                 }
-
-            },
-            Response.ErrorListener { it ->
-                val textView = TextView(parentView.context)
-                textView.text = "That didn't work! $it"
-                parentView.addView(textView)
-            }
-        )
-
-        queue.add(request);
     }
 }
