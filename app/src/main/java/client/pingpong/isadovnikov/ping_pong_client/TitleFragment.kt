@@ -20,7 +20,6 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 
 class TitleFragment : Fragment() {
-    private val HOST: String = "http://192.168.1.34:8080"
 
     private lateinit var queue: RequestQueue
     private lateinit var gson: Gson
@@ -38,6 +37,8 @@ class TitleFragment : Fragment() {
 
         binding.startButton.setOnClickListener { it: View ->
             it.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)
+            playerOne = null
+            playerTwo = null
         }
 
         return binding.root

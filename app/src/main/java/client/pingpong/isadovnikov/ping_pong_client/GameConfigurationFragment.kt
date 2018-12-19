@@ -32,6 +32,8 @@ class GameConfigurationFragment : Fragment() {
             binding.playerTwoName.text = it.username
         }
 
+        binding.startButton.isEnabled = playerOne != null && playerTwo != null
+
         binding.startButton.setOnClickListener { it: View ->
             it.findNavController().navigate(R.id.action_gameConfigurationFragment_to_gameFragment)
         }
