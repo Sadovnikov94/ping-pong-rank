@@ -41,13 +41,11 @@ class GameFragment : Fragment() {
         binding.playerTwoUsername.text = playerTwo?.username
 
         binding.playerOneAvatar.setOnClickListener { it: View ->
-            it.findNavController().navigate(R.id.action_gameFragment_to_titleFragment)
-            completeGame(playerOne!!, playerTwo!!)
+            completeGame(playerOne!!, playerTwo!!, it)
         }
 
         binding.playerTwoAvatar.setOnClickListener { it: View ->
-            it.findNavController().navigate(R.id.action_gameFragment_to_titleFragment)
-            completeGame(playerTwo!!, playerOne!!)
+            completeGame(playerTwo!!, playerOne!!, it)
         }
 
 
@@ -55,7 +53,7 @@ class GameFragment : Fragment() {
     }
 
 
-    private fun completeGame(winner: User, looser: User) {
+    private fun completeGame(winner: User, looser: User, view: View) {
 
         val game = Game(winner, looser)
 
@@ -64,8 +62,10 @@ class GameFragment : Fragment() {
                 "$host/pingpong/games",
                 JSONObject(gson.toJson(game)),
                 Response.Listener { response ->
+                    view.findNavController().navigate(R.id.action_gameFragment_to_titleFragment)
                 },
                 Response.ErrorListener { error ->
+                    view.findNavController().navigate(R.id.action_gameFragment_to_titleFragment)
                 }
         )
         queue.add(request)

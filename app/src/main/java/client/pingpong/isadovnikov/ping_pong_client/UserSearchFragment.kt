@@ -99,7 +99,7 @@ class UserSearchFragment : Fragment() {
 
                     val ratingView = TextView(parentView.context)
                     ratingView.setPadding(0, 0, 32, 0)
-                    ratingView.text = String.format("%.2f",user.rating.toDouble())
+                    ratingView.text = String.format("%.2f", user.rating.toDouble())
                     ratingView.textSize = 30F
                     userLine.addView(ratingView)
 
@@ -124,8 +124,6 @@ class UserSearchFragment : Fragment() {
                                     )
                         }
                     }
-
-                    userLine.setBackgroundResource(R.drawable.row_border)
 
                     parentView.addView(userLine)
                 }
